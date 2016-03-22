@@ -2,11 +2,10 @@
  * Angular 2 decorators and services
  */
 import {Component} from 'angular2/core';
-import {RouteConfig, Router, ROUTER_DIRECTIVES} from 'angular2/router';
-import {FORM_PROVIDERS} from 'angular2/common';
+import {RouteConfig, Router} from 'angular2/router';
 
-import {RouterActive} from './directives/router-active';
-import {Home} from './home/home';
+import {Home} from './home';
+import {AppState} from './app.service';
 
 /*
  * App Component
@@ -14,9 +13,9 @@ import {Home} from './home/home';
  */
 @Component({
   selector: 'app',
-  providers: [ ...FORM_PROVIDERS ],
-  directives: [ ...ROUTER_DIRECTIVES, RouterActive ],
-  pipes: [],
+  pipes: [ ],
+  providers: [ ],
+  directives: [ ],
   styles: [`
     nav ul {
       display: inline;
@@ -60,22 +59,31 @@ import {Home} from './home/home';
         <img [src]="angularclassLogo" width="10%">
       </div>
     </footer>
+
+    <pre>this.state = {{ state | json }}</pre>
   `
 })
 @RouteConfig([
-  { path: '/', component: Home, name: 'Index' },
-  { path: '/home', component: Home, name: 'Home' },
-  // Async load a component using Webpack's require with es6-promise-loader
-  { path: '/about', loader: () => require('./about/about')('About'), name: 'About' },
-  { path: '/**', redirectTo: ['Index'] }
+  { path: '/',      name: 'Index', component: Home, useAsDefault: true },
+  { path: '/home',  name: 'Home',  component: Home },
+  // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
+  { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
 ])
 export class App {
   angularclassLogo = 'assets/img/angularclass-avatar.png';
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
-  constructor() {
 
+  constructor(public appState: AppState) {}
+
+  get state() {
+    return this.appState.get();
   }
+
+  ngOnInit() {
+    console.log('Initial App State', this.state);
+  }
+
 }
 
 /*
@@ -84,5 +92,4 @@ export class App {
  * (The examples may not be updated as quickly. Please open an issue on github for us to update it)
  * For help or questions please contact us at @AngularClass on twitter
  * or our chat on Slack at https://AngularClass.com/slack-join
- * or via chat on Gitter at https://gitter.im/AngularClass/angular2-webpack-starter
  */
