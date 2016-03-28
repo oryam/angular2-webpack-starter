@@ -2,9 +2,13 @@
  * Angular 2 decorators and services
  */
 import {Component} from 'angular2/core';
-import {RouteConfig, Router} from 'angular2/router';
+import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
 
 import {Home} from './home';
+import {HeroesComponent} from './hero/heroes.component';
+import {HeroService} from './hero/hero.service';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {HeroDetailComponent} from './hero/detail/hero-detail.component';
 import {AppState} from './app.service';
 
 /*
@@ -14,8 +18,11 @@ import {AppState} from './app.service';
 @Component({
   selector: 'app',
   pipes: [ ],
-  providers: [ ],
-  directives: [ ],
+  providers: [
+    ROUTER_PROVIDERS,
+    HeroService
+  ],
+  directives: [ ROUTER_DIRECTIVES ],
   styles: [`
     nav ul {
       display: inline;
@@ -43,6 +50,12 @@ import {AppState} from './app.service';
             <a [routerLink]=" ['Home'] ">Home</a>
           </li>
           <li router-active>
+            <a [routerLink]=" ['Dashboard'] ">Dashboard</a>
+          </li>
+          <li router-active>
+            <a [routerLink]=" ['Heroes'] ">Heroes</a>
+          </li>
+          <li router-active>
             <a [routerLink]=" ['About'] ">About</a>
           </li>
         </ul>
@@ -66,6 +79,9 @@ import {AppState} from './app.service';
 @RouteConfig([
   { path: '/',      name: 'Index', component: Home, useAsDefault: true },
   { path: '/home',  name: 'Home',  component: Home },
+  { path: '/dashboard',  name: 'Dashboard',  component: DashboardComponent },
+  { path: '/heroes',  name: 'Heroes',  component: HeroesComponent },
+  { path: '/detail/:id',  name: 'HeroDetail',  component: HeroDetailComponent },
   // Async load a component using Webpack's require with es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about')('About') },
 ])
