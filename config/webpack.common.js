@@ -163,6 +163,8 @@ module.exports = {
         test: /\.css$/,
         loaders: ['to-string-loader', 'css-loader']
       },
+      // Support for SASS
+      { test: /\.scss$/, loader: 'raw-loader!sass-loader?sourceMap', exclude: /node_modules/ },
 
       /* Raw loader support for *.html
        * Returns file content as string

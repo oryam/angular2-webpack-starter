@@ -70,7 +70,9 @@
 
        "preversion": "npm test",
      "version": "npm run build",
-       "postversion": "git push && git push --tags"
+       "postversion": "git push && git push --tags",
+    "mock" : "apimocker --config server/apimocker.config.json",
+    "tpl:component": "gulp component --gulpfile template/gulpfile.js --name"
 
    },
   "dependencies": {
@@ -86,7 +88,22 @@
 
     "@angularclass/webpack-toolkit": "^1.0.1",
     "@angularclass/request-idle-callback": "^1.0.7",
-
+    "@angular2-material/button": "^2.0.0-alpha.5-2",
+    "@angular2-material/card": "^2.0.0-alpha.5-2",
+    "@angular2-material/checkbox": "^2.0.0-alpha.5-2",
+    "@angular2-material/core": "^2.0.0-alpha.5-2",
+    "@angular2-material/grid-list": "^2.0.0-alpha.5-2",
+    "@angular2-material/icon": "^2.0.0-alpha.5-2",
+    "@angular2-material/input": "^2.0.0-alpha.5-2",
+    "@angular2-material/list": "^2.0.0-alpha.5-2",
+    "@angular2-material/progress-bar": "^2.0.0-alpha.5-2",
+    "@angular2-material/progress-circle": "^2.0.0-alpha.5-2",
+    "@angular2-material/radio": "^2.0.0-alpha.5-2",
+    "@angular2-material/sidenav": "^2.0.0-alpha.5-2",
+    "@angular2-material/slide-toggle": "^2.0.0-alpha.5-2",
+    "@angular2-material/tabs": "^2.0.0-alpha.5-2",
+    "@angular2-material/toolbar": "^2.0.0-alpha.5-2",
+    "ng2-material": "^0.5.0",
     "ie-shim": "^0.1.0",
     "core-js": "^2.4.0",
     "rxjs": "5.0.0-beta.6",
@@ -130,6 +147,8 @@
     "tslint-loader": "^2.1.3",
     "url-loader": "^0.5.7",
     "style-loader": "^0.13.1",
+    "node-sass": "^3.7.0",
+    "sass-loader": "^3.2.0",
     "raw-loader": "0.5.1",
     "source-map-loader": "^0.1.5",
     "imports-loader": "^0.6.5",
@@ -144,6 +163,13 @@
 
     "html-webpack-plugin": "^2.21.0",
     "copy-webpack-plugin": "^3.0.1",
+
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-template": "^4.0.0",
+    "require-dir": "^0.3.0",
+    "yargs": "^4.7.1",
+    "camelcase": "^3.0.0",
 
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1",

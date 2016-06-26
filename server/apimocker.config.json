@@ -1,0 +1,28 @@
+{
+  "note": "Apimocker configuration.",
+  "mockDirectory": "server/data",
+  "staticDirectory": "server/static",
+  "staticPath": "/res",
+  "quiet": false,
+  "port": "4000",
+  "latency": 50,
+  "logRequestHeaders": false,
+  "webServices": {
+    "test": {
+      "mockFile": "test/test.json",
+      "latency": 20,
+      "verbs": [
+        "get",
+        "post"
+      ],
+      "responses": {
+        "get": {
+          "mockFile": "test/test.json"
+        },
+        "post": {
+          "mockFile": "test/test.json"
+        }
+      }
+    }
+  }
+}

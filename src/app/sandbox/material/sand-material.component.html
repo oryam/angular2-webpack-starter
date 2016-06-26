@@ -1,0 +1,45 @@
+<div class="sand-material" layout="row">
+  <md-sidenav-layout>
+
+    <md-sidenav #sideNav [opened]="true" align="start" mode="over">
+      <div layout="column">
+        <button md-button (click)="sideNav.close()">Menu 1</button>
+        <button md-button (click)="sideNav.close()">Menu 2</button>
+        <button md-button (click)="sideNav.close()">Menu 3</button>
+      </div>
+    </md-sidenav>
+
+
+    <md-toolbar>
+      <button md-button (click)="sideNav.toggle()" class="md-icon-button" aria-label="Settings">
+    <i md-icon>menu</i>
+  </button>
+      <span>Menu and toolbar</span>
+      <span flex></span>
+      <button md-button class="md-icon-button" aria-label="Favorite">
+    <i md-icon>favorite</i>
+  </button>
+      <button md-button class="md-icon-button" aria-label="More">
+    <i md-icon>more_vert</i>
+  </button>
+    </md-toolbar>
+
+    <md-data-table layout-fill>
+      <thead>
+        <tr>
+          <th class="md-text-cell">Material</th>
+          <th>Quantity</th>
+          <th>Unit price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let material of materials">
+          <td class="md-text-cell">{{ material.name }}</td>
+          <td>{{ material.quantity }}</td>
+          <td>{{ material.price }}</td>
+        </tr>
+      </tbody>
+    </md-data-table>
+
+  </md-sidenav-layout>
+</div>

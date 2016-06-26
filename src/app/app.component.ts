@@ -13,6 +13,7 @@ import { AppState } from './app.service';
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   styleUrls: [
+    './app.component.scss',
     './app.style.css'
   ],
   template: `
@@ -32,6 +33,18 @@ import { AppState } from './app.service';
       <span>
         <a [routerLink]=" ['./about'] ">
           About
+        </a>
+      </span>
+      |
+      <span>
+        <a [routerLink]=" ['./sandbox'] ">
+          Sandbox
+        </a>
+      </span>
+      |
+      <span>
+        <a [routerLink]=" ['./my-test'] ">
+          MyTest
         </a>
       </span>
     </nav>
