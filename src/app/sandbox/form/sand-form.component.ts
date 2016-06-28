@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { REACTIVE_FORM_DIRECTIVES, FormGroup, FormControl, Validators } from '@angular/forms';
 
+import { MD_INPUT_DIRECTIVES } from '@angular2-material/input';
+import { MATERIAL_DIRECTIVES } from 'ng2-material';
+
 import { User } from './user';
 import { Address } from './address';
 
@@ -8,7 +11,11 @@ import { Address } from './address';
     selector: 'app-sand-form',
     inputs: [],
     pipes: [],
-    directives: [ REACTIVE_FORM_DIRECTIVES ],
+    directives: [
+        REACTIVE_FORM_DIRECTIVES,
+        MATERIAL_DIRECTIVES,
+        MD_INPUT_DIRECTIVES
+    ],
     providers: [],
     template: require('./sand-form.component.html'),
     styles: [

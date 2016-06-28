@@ -3,14 +3,12 @@
     <div>Form with ngForm, ngModel</div>
     <form #f="ngForm" novalidate>
         <div>
-            <label>Firstname</label>
-            <input type="text" [(ngModel)]="user.firstname" name="firstname" #firstname="ngModel" minlength="4" />
+            <md-input placeholder="Firstname" [(ngModel)]="user.firstname" name="firstname" #firstname="ngModel" minlength="4"></md-input>
             <span [hidden]="firstname.pristine || firstname.valid">Type at least 4 characters</span>
         </div>
         <div ngModelGroup="address">
             <div>
-                <label>Street</label>
-                <input type="text" [(ngModel)]="user.address.street" name="street" #street="ngModel" minlength="6" />
+                <md-input placeholder="Street" [(ngModel)]="user.address.street" name="street" #street="ngModel" minlength="6"></md-input>
                 <span [hidden]="street.pristine || street.valid">Type at least 6 characters</span>
             </div>
         </div>
@@ -19,15 +17,12 @@
     <div>Form with formGroup, formControlName</div>
     <form [formGroup]="validationForm" novalidate>
         <div>
-            <label>Lastname</label>
-            <input type="text" formControlName="lastname" />
+            <md-input placeholder="Lastname" formControlName="lastname"></md-input>
             <span [hidden]="validationForm.controls.lastname.pristine || validationForm.controls.lastname.valid">Type at least 2 characters</span>
-            <button (click)="test(validationForm, lastname)">test</button>
         </div>
         <div formGroupName="address">
             <div>
-                <label>Zip code</label>
-                <input type="text" formControlName="zip" />
+                <md-input placeholder="Zipcode" formControlName="zip"></md-input>
                 <span [hidden]="validationForm.controls.address.controls.zip.pristine || validationForm.controls.address.controls.zip.valid">Type at least 3 characters</span>
             </div>
         </div>
