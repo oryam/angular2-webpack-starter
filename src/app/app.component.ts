@@ -47,6 +47,12 @@ import { AppState } from './app.service';
           MyTest
         </a>
       </span>
+      |
+      <span>
+        <a [routerLink]=" ['./sand-form'] ">
+          Form
+        </a>
+      </span>
     </nav>
 
     <main>

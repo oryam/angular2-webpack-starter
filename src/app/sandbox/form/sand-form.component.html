@@ -1,1 +1,35 @@
-<div class="app-sand-form">{{ name }}</div>
+<div class="app-sand-form">
+    {{ name }}
+    <div>Form with ngForm, ngModel</div>
+    <form #f="ngForm" novalidate>
+        <div>
+            <label>Firstname</label>
+            <input type="text" [(ngModel)]="user.firstname" name="firstname" #firstname="ngModel" minlength="4" />
+            <span [hidden]="firstname.pristine || firstname.valid">Type at least 4 characters</span>
+        </div>
+        <div ngModelGroup="address">
+            <div>
+                <label>Street</label>
+                <input type="text" [(ngModel)]="user.address.street" name="street" #street="ngModel" minlength="6" />
+                <span [hidden]="street.pristine || street.valid">Type at least 6 characters</span>
+            </div>
+        </div>
+    </form>
+
+    <div>Form with formGroup, formControlName</div>
+    <form [formGroup]="validationForm" novalidate>
+        <div>
+            <label>Lastname</label>
+            <input type="text" formControlName="lastname" />
+            <span [hidden]="validationForm.controls.lastname.pristine || validationForm.controls.lastname.valid">Type at least 2 characters</span>
+            <button (click)="test(validationForm, lastname)">test</button>
+        </div>
+        <div formGroupName="address">
+            <div>
+                <label>Zip code</label>
+                <input type="text" formControlName="zip" />
+                <span [hidden]="validationForm.controls.address.controls.zip.pristine || validationForm.controls.address.controls.zip.valid">Type at least 3 characters</span>
+            </div>
+        </div>
+    </form>
+</div>

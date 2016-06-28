@@ -4,12 +4,14 @@ import { NoContent } from './no-content';
 
 import { SandboxComponent } from './sandbox';
 import { MyTestComponent } from './sandbox/my-test';
+import { AppSandFormComponent } from './sandbox/form';
 
 export const routes: RouterConfig = [
   { path: '',      component: Home },
   { path: 'home',  component: Home },
   { path: 'sandbox',  component: SandboxComponent },
   { path: 'my-test',  component: MyTestComponent },
+  { path: 'sand-form',  component: AppSandFormComponent },
   // make sure you match the component type string to the require in asyncRoutes
   { path: 'about', component: 'About' },
   { path: '**',    component: NoContent },
